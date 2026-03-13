@@ -41,7 +41,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="text-2xl font-bold tracking-tighter text-primary">
-              CIVIL<span className="text-foreground">GCEE</span>
+              CIVIL-<span className="text-foreground">GCEE</span>
             </Link>
           </div>
 

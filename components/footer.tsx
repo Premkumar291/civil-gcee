@@ -13,10 +13,10 @@ export default function Footer() {
           {/* Brand & Mission */}
           <div className="space-y-6">
             <Link href="/" className="text-3xl font-bold tracking-tighter text-primary">
-              CIVIL<span className="text-foreground">GCEE</span>
+              CIVIL<span className="text-foreground"></span>
             </Link>
             <p className="text-muted-foreground leading-relaxed">
-              Excellence in civil engineering education since 1995. Innovating 
+              Excellence in civil engineering education since 1986. Innovating 
               for a sustainable and resilient future through research and leadership.
             </p>
             <div className="flex space-x-4">
@@ -68,7 +68,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3 text-muted-foreground">
                 <MapPin className="text-primary flex-shrink-0 mt-1" size={18} />
-                <span>Government College of Engineering, Salem, Tamil Nadu, India.</span>
+                <span>Government College of Engineering-Erode, Tamil Nadu, India.</span>
               </li>
               <li className="flex items-center space-x-3 text-muted-foreground">
                 <Phone className="text-primary flex-shrink-0" size={18} />
@@ -83,7 +83,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground space-y-4 md:space-y-0">
-          <p>© 2025 Department of Civil Engineering, GCEE. All rights reserved.</p>
+          <p>© 2026 Department of Civil Engineering, GCEE. All rights reserved.</p>
           <div className="flex space-x-6">
             <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
