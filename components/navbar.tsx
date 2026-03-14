@@ -1,110 +1,78 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import { Moon, Sun, Menu, X } from "lucide-react";
-import { gsap } from "gsap";
-import { cn } from "@/lib/utils";
-
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "Staff", href: "#staff" },
-  { name: "Civil Association", href: "#association" },
-];
+import { Home, Info, GraduationCap, Microscope, Users, LineChart, Mail, Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const navRef = useRef(null);
 
-  useEffect(() => {
-    setMounted(true);
-    gsap.fromTo(
-      navRef.current,
-      { y: -100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: "power4.out", delay: 0.2 }
-    );
-  }, []);
-
-  if (!mounted) return null;
+  const navLinks = [
+    { name: "Home", href: "#home", icon: Home },
+    { name: "About", href: "#about", icon: Info },
+    { name: "Programs", href: "#programs", icon: GraduationCap },
+    { name: "Laboratories", href: "#facilities", icon: Microscope },
+    { name: "Faculty", href: "#faculty", icon: Users },
+    { name: "Activities", href: "#activities", icon: LineChart },
+    { name: "Contact", href: "#contact", icon: Mail },
+  ];
 
   return (
-    <nav
-      ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/40 transition-all duration-300"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="text-2xl font-bold tracking-tighter text-primary">
-              CIVIL-<span className="text-foreground">GCEE</span>
-            </Link>
-          </div>
+    <nav className="sticky top-0 z-50 sticky-top shadow-sm bg-primary-dark w-full transition-all">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="flex justify-between items-center h-16 lg:h-auto lg:py-3">
+          
+          {/* Mobile Brand (hidden on lg+) */}
+          <Link href="#" className="lg:hidden text-white font-bold text-xl tracking-wide">
+            GCEE Civil
+          </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm font-medium hover:text-primary transition-colors duration-200 relative group"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                </Link>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-2 text-white/70 hover:text-white border-0 transition-colors focus:outline-none"
+            aria-label="Toggle navigation"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex w-full justify-center">
+            <ul className="flex items-center space-x-2 font-medium">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="flex items-center text-white/80 hover:text-white px-3 py-2 rounded-md transition-colors duration-200 group"
+                  >
+                    <link.icon className="w-4 h-4 mr-2 group-hover:text-accent transition-colors" />
+                    <span>{link.name}</span>
+                  </Link>
+                </li>
               ))}
-              <button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="p-2 rounded-full hover:bg-muted transition-colors"
-                aria-label="Toggle dark mode"
-              >
-                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full hover:bg-muted transition-colors"
-            >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md hover:bg-muted transition-colors"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            </ul>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "md:hidden absolute top-20 left-0 right-0 glass border-b border-border p-4 transition-all duration-300 origin-top",
-          isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"
+        {/* Mobile Navigation Dropdown */}
+        {isOpen && (
+          <div className="lg:hidden pb-4">
+            <ul className="flex flex-col space-y-1 font-medium bg-primary-dark/95 rounded-b-lg">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-md transition-colors"
+                  >
+                    <link.icon className="w-5 h-5 mr-3 text-accent" />
+                    <span>{link.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
-      >
-        <div className="flex flex-col space-y-4">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="text-lg font-medium hover:text-primary py-2 px-4 rounded-lg hover:bg-muted/50 transition-all"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
       </div>
     </nav>
   );
