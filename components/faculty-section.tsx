@@ -69,16 +69,6 @@ function FacultyCard({ data, isLarge = false }: { data: any, isLarge?: boolean }
       {/* Background Header Image Style */}
       <div className="bg-primary-dark pt-16 pb-8 relative text-center">
         {/* Profile Image Float */}
-        <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
-          <div className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden relative bg-white">
-            <Image 
-              src={data.image}
-              alt={data.name}
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
       </div>
 
       {/* Content Body */}

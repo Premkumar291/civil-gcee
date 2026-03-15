@@ -6,6 +6,20 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const navHeight = 64;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <section 
       id="home" 
@@ -67,19 +81,19 @@ export default function HeroSection() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col sm:flex-row justify-center gap-4"
         >
-          <Link 
-            href="#about" 
-            className="inline-flex items-center justify-center bg-accent text-primary-dark hover:bg-white px-8 py-3.5 font-bold rounded-full shadow-lg hover:scale-105 transition-all duration-300"
+          <button 
+            onClick={() => scrollToSection('about')}
+            className="inline-flex items-center justify-center bg-accent text-primary-dark hover:bg-white px-8 py-3.5 font-bold rounded-full shadow-lg hover:scale-105 transition-all duration-300 border-0 cursor-pointer"
           >
             Explore Department
             <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
-          <Link 
-            href="#facilities" 
-            className="inline-flex items-center justify-center bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-dark px-8 py-3.5 font-bold rounded-full shadow-lg hover:scale-105 transition-all duration-300"
+          </button>
+          <button 
+            onClick={() => scrollToSection('facilities')}
+            className="inline-flex items-center justify-center bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-dark px-8 py-3.5 font-bold rounded-full shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
           >
             Our Facilities
-          </Link>
+          </button>
         </motion.div>
       </div>
     </section>

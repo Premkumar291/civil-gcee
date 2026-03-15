@@ -333,7 +333,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow p-6 md:p-12 md:max-h-screen overflow-y-auto relative">
+      <div className="flex-grow p-4 md:p-12 md:max-h-screen overflow-y-auto relative">
         
         {/* Header Bar */}
         <div className="flex justify-between items-center mb-8 border-b pb-4">

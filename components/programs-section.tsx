@@ -159,7 +159,7 @@ export default function ProgramsSection() {
               </button>
             </div>
             
-            <div className="p-8 overflow-y-auto">
+            <div className="p-6 md:p-8 overflow-y-auto">
               <h6 className="text-primary-dark font-bold uppercase tracking-wider mb-6 border-b pb-4">
                 {activeModal === 'phd' ? 'Research Focus Areas' : 'Program Outcomes'}
               </h6>
