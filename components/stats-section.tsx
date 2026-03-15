@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
 import { Award, FlaskConical, Users, GraduationCap } from "lucide-react";
 import { motion, useSpring, useTransform, animate } from "framer-motion";
 
-function Counter({ value, duration = 2 }: { value: number | string, duration?: number }) {
+function Counter({ value, duration = 2 }: { value: number | string | null, duration?: number }) {
   const [displayValue, setDisplayValue] = useState(0);
-  const targetValue = typeof value === 'string' ? parseInt(value) : value;
+  const targetValue = value === null ? 0 : (typeof value === 'string' ? parseInt(value) : value);
 
   useEffect(() => {
     if (isNaN(targetValue)) return;

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import LoadingScreen from "@/components/loading-screen";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,8 +18,6 @@ export const metadata: Metadata = {
   title: "Department of Civil Engineering | GCEE",
   description: "Excellence in Engineering Education and Research.",
 };
-
-import LoadingScreen from "@/components/loading-screen";
 
 export default function RootLayout({
   children,
