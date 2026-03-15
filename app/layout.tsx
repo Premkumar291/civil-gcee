@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   description: "Excellence in Engineering Education and Research.",
 };
 
+import LoadingScreen from "@/components/loading-screen";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${poppins.variable} antialiased font-sans bg-background text-foreground`}>
+        <LoadingScreen />
         {children}
       </body>
     </html>
