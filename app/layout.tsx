@@ -17,6 +17,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Department of Civil Engineering | GCEE",
   description: "Excellence in Engineering Education and Research.",
+  icons: {
+    icon: "/favicon.png?v=1",
+    shortcut: "/favicon.png?v=1",
+    apple: "/favicon.png?v=1",
+  },
 };
 
 export default function RootLayout({
